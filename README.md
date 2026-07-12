@@ -78,7 +78,6 @@ Then open the local URL shown in your terminal (typically `http://localhost:3000
 
 ### Requirements
 - Node.js 18+ (if running the exported code locally)
-- A Base44 account (for the hosted/no-code version)
 - API keys for any connected AI services, configured in your `.env` file
 
 ---
