@@ -79,9 +79,3 @@ Then open the local URL shown in your terminal (typically `http://localhost:3000
 ### Requirements
 - Node.js 18+ (if running the exported code locally)
 - API keys for any connected AI services, configured in your `.env` file
-
----
-
-## Final Thoughts
-
-Participating in HACKHAZARDS '26 pushed us to think beyond just "cool tech" and focus on building something that could genuinely improve people's lives. MediMind AI reflects that mission: using AI not just to impress, but to help.
