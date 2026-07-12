@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: medimind_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: securepassword123
+      POSTGRES_DB: medimind_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d medimind_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - medimind_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medimind_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - POSTGRES_SERVER=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=securepassword123
+      - POSTGRES_DB=medimind_db
+      - POSTGRES_PORT=5432
+      - SECRET_KEY=38e3e4cf6b6a3375c324fb7256241b31a89c9c0bda5029be
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - medimind_network
+
+volumes:
+  postgres_data:
+
+networks:
+  medimind_network:
+    driver: bridge

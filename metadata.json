@@ -1,0 +1,6 @@
+{
+  "name": "MediMind AI",
+  "description": "Your Personal AI Health Companion. Monitor daily health scores, scan medical reports for AI analysis, track prescription adherence, and consult our clinical chatbot helper.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
